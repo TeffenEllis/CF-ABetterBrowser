@@ -22,7 +22,7 @@ CloudFlare.define( "no_old_ie", function( )
 		// Create <div> element
 		var wrapper = document.createElement( 'div' );
 		wrapper.id = 'bad_browser';
-		wrapper.innerHTML = 'You are using outdated browser. <a href="http://abetterbrowser.org/">More information &#187;</a>';
+		wrapper.innerHTML = 'You are using an outdated browser. <a href="http://abetterbrowser.org/">More information &#187;</a>';
 		
 		// Append our elements
 		document.getElementsByTagName( 'head' )[ 0 ].appendChild( style );

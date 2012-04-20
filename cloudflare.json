@@ -1,6 +1,6 @@
 {
 	"name": "A Better Browser",
-	"description": "Warns users about their old browser version.",
+	"description": "Warns users with a simple message at the top of your website if their browser version is too old.",
 	"keywords":
 	[
 		"advocacy"
