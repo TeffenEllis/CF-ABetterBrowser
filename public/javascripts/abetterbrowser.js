@@ -46,7 +46,8 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'fi': 'Käytät vanhentunutta selainta. <a href="' + moreInformationLink + '" target="_blank">Lisää tietoa &#187;</a>',
 		'zh': '您的浏览器版本过旧。 <a href="' + moreInformationLink + '" target="_blank">更多信息 &#187;</a>',
 		'es': 'Esta usando un navegador desactualizado. <a href="' + moreInformationLink + '" target="_blank">M&aacute;s informaci&oacute;n &#187;</a>',
-		'nl': 'U gebruikt op dit moment een verouderde webbrowser. <a href="' + moreInformationLink + '" target="_blank">Meer informatie &#187;</a>'
+		'nl': 'U gebruikt op dit moment een verouderde webbrowser. <a href="' + moreInformationLink + '" target="_blank">Meer informatie &#187;</a>',
+		'he': 'דפדפן האינטרנט שלך אינו מעודכן. <a href="' + moreInformationLink + '" target="_blank">למידע נוסף &#187;</a>
 	},
 	
 	/**
