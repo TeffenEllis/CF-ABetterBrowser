@@ -51,7 +51,8 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'nl': 'U gebruikt op dit moment een verouderde webbrowser. <a href="' + moreInformationLink + '" target="_blank">Meer informatie &#187;</a>',
 		'vi': 'Trình duyệt bạn dùng đã lỗi thời rồi. <a href="' + moreInformationLink + '" target="_blank">Thêm thông tin &#187;</a>',
 		'he': 'דפדפן האינטרנט שלך אינו מעודכן. <a href="' + moreInformationLink + '" target="_blank">למידע נוסף &#187;</a>',
-		'it': 'Stai usando un browser datato. <a href="' + moreInformationLink + '" target="_blank">Ulteriori informazioni &#187;</a>'
+		'it': 'Stai usando un browser datato. <a href="' + moreInformationLink + '" target="_blank">Ulteriori informazioni &#187;</a>',
+		'el': 'Χρησιμοποιείτε ένα ξεπερασμένο πρόγραμμα περιήγησης. <a href="' + moreInformationLink + '" target="_blank">Περισσότερες πληροφορίες &#187;</a>'
 	},
 	
 	/**
