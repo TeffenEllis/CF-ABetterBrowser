@@ -3,10 +3,10 @@
 CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abetterbrowser/config' ], function( version, user, config )
 {
 	"use strict";
-	
+
 	version = version.internetExplorer;
 	var maxVersion = parseInt( config.ie, 10 ) || 8;
-	
+
 	/**
 	 * Is user using IE? Is it old? Did user close this message already?
 	 */
@@ -14,21 +14,21 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	{
 		return true;
 	}
-	
+
 	/**
 	 * Let's collect some referral statistics with link shortener service
 	 */
 	var moreInformationLink = 'http://goo.gl/OVoHF',
-	
+
 	doc = document,
-	
+
 	/**
 	 * Detect user's browser language
 	 *
 	 * This is aimed at IE, so we don't try to get navigator.language
 	 */
 	language = window.navigator.browserLanguage || 'en',
-	
+
 	/**
 	 * Translations
 	 */
@@ -48,7 +48,7 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'pl': 'Używasz przestarzałej przeglądarki. <a href="' + moreInformationLink + '" target="_blank">Więcej informacji &#187;</a>',
 		'fi': 'Käytät vanhentunutta selainta. <a href="' + moreInformationLink + '" target="_blank">Lisää tietoa &#187;</a>',
 		'zh': '您的浏览器版本过旧。 <a href="' + moreInformationLink + '" target="_blank">更多信息 &#187;</a>',
-		'es': 'Su navegador está desactualizado. <a href="' + moreInformationLink + '" target="_blank">M&aacute;s informaci&oacute;n &#187;</a>',
+		'es': 'Su navegador está obsoleto. <a href="' + moreInformationLink + '" target="_blank">M&aacute;s informaci&oacute;n &#187;</a>',
 		'nl': 'U gebruikt op dit moment een verouderde webbrowser. <a href="' + moreInformationLink + '" target="_blank">Meer informatie &#187;</a>',
 		'vi': 'Trình duyệt bạn dùng đã lỗi thời rồi. <a href="' + moreInformationLink + '" target="_blank">Thêm thông tin &#187;</a>',
 		'he': 'דפדפן האינטרנט שלך אינו מעודכן. <a href="' + moreInformationLink + '" target="_blank">למידע נוסף &#187;</a>',
@@ -56,7 +56,7 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'el': 'Χρησιμοποιείτε ένα ξεπερασμένο πρόγραμμα περιήγησης. <a href="' + moreInformationLink + '" target="_blank">Περισσότερες πληροφορίες &#187;</a>',
 		'id': 'Anda menggunakan web browser versi lama. <a href="' + moreInformationLink + '" target="_blank">Informasi selengkapnya &#187;</a>'
 	},
-	
+
 	/**
 	 * Style rules
 	 */
@@ -75,17 +75,17 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 			'text-align:center;' +
 			'color:#FFF' +
 		'}' +
-		
+
 		'#cloudflare-old-browser a {' +
 			'text-decoration:underline;' +
 			'color:#EBEBF4' +
 		'}' +
-		
+
 		'#cloudflare-old-browser a:hover, #cloudflare-old-browser a:active {' +
 			'text-decoration:none;' +
 			'color:#DBDBEB' +
 		'}' +
-		
+
 		'#cloudflare-old-browser-close {' +
 			'background:#393b40;' +
 			'display:block;' +
@@ -99,12 +99,12 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 			'font-size:30px;' +
 			'line-height:42px' +
 		'}' +
-		
+
 		'#cloudflare-old-browser-close:hover {' +
 			'background:#E04343;' +
 			'color:#FFF' +
 		'}',
-	
+
 	/**
 	 * Have a single var statement, so it compiles better
 	 */
@@ -112,14 +112,14 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	head = doc.getElementsByTagName( 'head' )[ 0 ],
 	message = doc.createElement( 'div' ),
 	closeButton = doc.createElement( 'a' ),
-	
+
 	/**
 	 * Injects style rules into the document to handle formatting
 	 */
 	style = doc.createElement( 'style' );
 	style.id = 'cloudflare-abetterbrowser';
 	style.setAttribute( 'type', 'text/css' );
-	
+
 	if( style.styleSheet )
 	{
 		style.styleSheet.cssText = rules;
@@ -128,36 +128,36 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	{
 		style.appendChild( doc.createTextNode( rules ) );
 	}
-	
+
 	head.insertBefore( style, head.firstChild );
-	
+
 	/**
 	 * Message container
 	 */
 	message.id = 'cloudflare-old-browser';
 	message.innerHTML = translations[ language.substring( 0, 2 ) ] || translations.en;
-	
+
 	/**
 	 * Close button
 	 */
 	closeButton.id = 'cloudflare-old-browser-close';
 	closeButton.innerHTML = '&times;';
-	
+
 	message.appendChild( closeButton );
-	
+
 	closeButton.onclick = function( )
 	{
 		body.removeChild( message );
 		body.className = body.className.replace( new RegExp( '(\\s|^)cloudflare-old-browser-body(\\s|$)' ), '' );
-		
+
 		/**
 		 * Hide message for 7 days
 		 */
 		user.getCookie( 'cfapp_abetterbrowser', 1, 7 );
-		
+
 		return false;
 	};
-	
+
 	/**
 	 * Injects our message into the body
 	 */
