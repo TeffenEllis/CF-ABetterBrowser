@@ -34,6 +34,7 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	translations =
 	{
 		'en': 'You are using an outdated browser. <a href="' + moreInformationLink + '" target="_blank">More information &#187;</a>',
+		'cz': 'Používáte zastaralý prohlížeč. <a href="' + moreInformationLink + '" target="_blank">Více informací &#187;</a>',
 		'is': 'Þú ert að nota úreltan vafra. <a href="' + moreInformationLink + '" target="_blank">Nánari upplýsingar &#187;</a>',
 		'ru': 'Вы используете устаревший браузер. <a href="' + moreInformationLink + '" target="_blank">Подробнее &#187;</a>',
 		'fr': 'Votre navigateur n\'est pas à jour. <a href="' + moreInformationLink + '" target="_blank">Plus d\'information &#187;</a>',
