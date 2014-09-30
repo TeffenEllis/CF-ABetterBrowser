@@ -4,11 +4,32 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 {
 	version = version.internetExplorer;
 	
+	//http://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx#code-snippet-3
+	var engine = null;
+	if (window.navigator.appName == "Microsoft Internet Explorer")
+	{
+		// This is an IE browser. What mode is the engine in?
+		if (document.documentMode) // IE8 or later
+			engine = document.documentMode;
+		else // IE 5-7
+		{
+			engine = 5; // Assume quirks mode unless proven otherwise
+			if (document.compatMode)
+			{
+				if (document.compatMode == "CSS1Compat")
+					engine = 7; // standards mode
+			}
+			// There is no test for IE6 standards mode because that mode  
+			// was replaced by IE7 standards mode; there is no emulation.
+		}
+	}
+
 	/**
 	 * Is user using IE? Is it old? Did user close this message already?
 	 */
 	if( version === undefined
 	||  version > ( parseInt( config.ie, 10 ) || 8 )
+	||  engine > ( parseInt( config.ie, 10 ) || 8 )
 	||  user.getCookie( 'cfapp_abetterbrowser' ) === 1 )
 	{
 		return true;
@@ -29,9 +50,9 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	moreInformationLink = 'http://www.whatbrowser.org/intl/' + language + '/',
 	
 	/**
-	 * Translations
+	 * Outdated browser translations
 	 */
-	translations =
+	outdatedTranslations =
 	{
 		'en': 'You are using an outdated browser. <a href="' + moreInformationLink + '" target="_blank">More information &#187;</a>',
 		
@@ -63,6 +84,15 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'vi': 'Trình duyệt bạn dùng đã lỗi thời rồi. <a href="' + moreInformationLink + '" target="_blank">Thêm thông tin &#187;</a>',
 		'zh': '您的浏览器版本过旧。 <a href="' + moreInformationLink + '" target="_blank">更多信息 &#187;</a>',
 		'zh-tw': '你正在使用過時的瀏覽器。 <a href="' + moreInformationLink + '" target="_blank">更多訊息 &#187;</a>'
+	},
+	/**
+	 * Compatibility view translations
+	 */
+	compatibilityTranslations =
+	{
+		'en': 'This site is not compatible with Compatibility View. <a href="http://windows.microsoft.com/en-us/internet-explorer/products/ie-9/features/compatibility-view" target="_blank">More information on Compatibility View &#187;</a>',
+
+		'es': 'Este sitio no es compatible con la Vista de compatibilidad. <a href="http://windows.microsoft.com/es-us/internet-explorer/products/ie-9/features/compatibility-view" target="_blank">Más información sobre la Vista de compatibilidad &#187;</a>'
 	},
 	
 	/**
@@ -143,7 +173,11 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	 * Message container
 	 */
 	message.id = 'cloudflare-old-browser';
-	message.innerHTML = translations[ language ] || translations[ language.substring( 0, 2 ) ] || translations.en;
+	if(engine < version) {
+		message.innerHTML = compatibilityTranslations[ language ] || compatibilityTranslations[ language.substring( 0, 2 ) ] || compatibilityTranslations.en;
+	} else {
+		message.innerHTML = outdatedTranslations[ language ] || outdatedTranslations[ language.substring( 0, 2 ) ] || outdatedTranslations.en;
+	}
 	
 	/**
 	 * Close button
