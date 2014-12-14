@@ -60,6 +60,7 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 	{
 		'en': 'You are using an outdated browser. ' + moreInformationLink + 'More information &#187;',
 		
+		'lv': 'Jūs izmantojat novecojušu pārlūku. ' + moreInformationLink + 'Uzzināt vairāk &#187;',
 		'af': 'Jy gebruik \'n verouderde webblaaier. ' + moreInformationLink + 'Meer inligting &#187;',
 		'ar': 'المتصفح الذي تستخدمه قديم وغير محدث. ' + moreInformationLink + ' المزيد من المعلومات &#187; ',
 		'cs': 'Používáte zastaralý prohlížeč. ' + moreInformationLink + 'Více informací &#187;',
