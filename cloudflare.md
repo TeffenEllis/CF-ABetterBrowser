@@ -4,7 +4,7 @@ If the visitor is using an Internet Explorer version less than or equal to speci
 
 There are links to four different modern browsers at WhatBrowser.org, including the most recent version of user's current browser.
 
-![Example](/images/apps/abetterbrowser/example.png "What it looks like")
+![Example](/public/images/example.png "What it looks like")
 
 Note: Internet Explorer 9's [Compatibility view](http://windows.microsoft.com/en-US/internet-explorer/products/ie-9/features/compatibility-view) will trigger the message, since the browser pretends to be an earlier version of Internet Explorer.
 
