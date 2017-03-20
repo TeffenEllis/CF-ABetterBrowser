@@ -71,6 +71,7 @@ CloudFlare.define( 'abetterbrowser', [ 'cloudflare/dom', 'cloudflare/user', 'abe
 		'el': 'Χρησιμοποιείτε ένα ξεπερασμένο πρόγραμμα περιήγησης. ' + moreInformationLink + 'Περισσότερες πληροφορίες &#187;',
 		'eo': 'Vi uzas antikvan retumilon. ' + moreInformationLink + 'Pli informo &#187;',
 		'es': 'Su navegador está obsoleto. ' + moreInformationLink + 'M&aacute;s informaci&oacute;n &#187;',
+		'et': 'Sa kasutad aegunud ebaturvalist veebilehitsejat. ' + moreInformationLink + 'Rohkem informatsiooni &#187;',
 		'fa': 'شما از مرورگری قدیمی استفاده می کنید. ' + moreInformationLink + '&#187;اطلاعات بیشتر',
 		'fi': 'Käytät vanhentunutta selainta. ' + moreInformationLink + 'Lisää tietoa &#187;',
 		'fr': 'Votre navigateur n\'est pas à jour. ' + moreInformationLink + 'Plus d\'information &#187;',
